@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class CourseController {
@@ -36,6 +38,10 @@ public class CourseController {
             return ResponseEntity.ok("Course deleted!");
         else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found");
+    }
+    @GetMapping("/courses/all")
+    public List<Course> getCourses(){
+        return courseService.getCourses();
     }
 
 }
